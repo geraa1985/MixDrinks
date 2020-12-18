@@ -12,7 +12,8 @@ import com.geraa1985.mixdrinks.ui.BackButtonListener
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
-class SelectFragment: MvpAppCompatFragment(), ISelectView, BackButtonListener {
+class SelectFragment : MvpAppCompatFragment(), ISelectView, BackButtonListener,
+    View.OnClickListener {
 
     private lateinit var binding: FragmentSelectBinding
 
@@ -27,6 +28,19 @@ class SelectFragment: MvpAppCompatFragment(), ISelectView, BackButtonListener {
     ): View {
         binding = FragmentSelectBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.alcohol.setOnClickListener(this)
+        binding.nonalcohol.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            binding.alcohol -> { presenter.loadAlcoholList() }
+            binding.nonalcohol -> { presenter.loadNonAlcoholList() }
+        }
     }
 
     override fun backClicked(): Boolean {

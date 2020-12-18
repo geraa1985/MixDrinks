@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">MixDrinks</string>
     <string name="alcohol">alcohol</string>
-    <string name="nonalcohol">nonalcohol</string>
+    <string name="non_alcohol">non-alcohol</string>
     <string name="alcohol_text">Alcohol</string>
-    <string name="non_alcohol_еуче">Non-alcohol</string>
+    <string name="non_alcohol_text">Non-alcohol</string>
+    <string name="cocktail">cocktail</string>
+    <string name="cocktail_text">cocktail_text</string>
 </resources>

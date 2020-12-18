@@ -10,7 +10,7 @@
         android:id="@+id/select_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#5A5A59"
+        android:background="#474746"
         android:elevation="10dp"
         android:minHeight="?actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.5"
-            android:contentDescription="@string/nonalcohol"
+            android:contentDescription="@string/non_alcohol"
             android:scaleType="fitXY"
             android:src="@drawable/nonalcohol" />
 
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/non_alcohol_еуче"
+            android:text="@string/non_alcohol_text"
             android:textSize="50sp"
             android:textStyle="italic|bold" />
     </androidx.cardview.widget.CardView>
