@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6A666A"
+    android:background="@color/base_background"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/list_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#474746"
+        android:background="@color/toolbar"
         android:elevation="10dp"
         android:minHeight="?actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"

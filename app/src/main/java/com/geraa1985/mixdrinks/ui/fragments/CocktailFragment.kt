@@ -61,6 +61,244 @@ class CocktailFragment: MvpAppCompatFragment(), BackButtonListener, ICocktailVie
         binding.cocktailToolbar.title = name
     }
 
+    override fun showIngredient1(ingredient: String) {
+        binding.ingredient1.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient2(ingredient: String) {
+        binding.ingredient2.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient3(ingredient: String) {
+        binding.ingredient3.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient4(ingredient: String) {
+        binding.ingredient4.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient5(ingredient: String) {
+        binding.ingredient5.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient6(ingredient: String) {
+        binding.ingredient6.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient7(ingredient: String) {
+        binding.ingredient7.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient8(ingredient: String) {
+        binding.ingredient8.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient9(ingredient: String) {
+        binding.ingredient9.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient10(ingredient: String) {
+        binding.ingredient10.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient11(ingredient: String) {
+        binding.ingredient11.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient12(ingredient: String) {
+        binding.ingredient12.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient13(ingredient: String) {
+        binding.ingredient13.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient14(ingredient: String) {
+        binding.ingredient14.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showIngredient15(ingredient: String) {
+        binding.ingredient15.apply {
+            visibility = View.VISIBLE
+            text = ingredient
+        }
+    }
+
+    override fun showMeasure1(measure: String) {
+        binding.measure1.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure2(measure: String) {
+        binding.measure2.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure3(measure: String) {
+        binding.measure3.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure4(measure: String) {
+        binding.measure4.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure5(measure: String) {
+        binding.measure5.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure6(measure: String) {
+        binding.measure6.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure7(measure: String) {
+        binding.measure7.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure8(measure: String) {
+        binding.measure8.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure9(measure: String) {
+        binding.measure9.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure10(measure: String) {
+        binding.measure10.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure11(measure: String) {
+        binding.measure11.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure12(measure: String) {
+        binding.measure12.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure13(measure: String) {
+        binding.measure13.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure14(measure: String) {
+        binding.measure14.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showMeasure15(measure: String) {
+        binding.measure15.apply {
+            visibility = View.VISIBLE
+            text = measure
+        }
+    }
+
+    override fun showCategory(categoty: String) {
+        binding.category.apply {
+            visibility = View.VISIBLE
+            text = categoty
+        }
+    }
+
+    override fun showAlcoholic(alcoholic: String) {
+        binding.alcoholic.apply {
+            visibility = View.VISIBLE
+            text = alcoholic
+        }
+    }
+
+    override fun showGlass(glass: String) {
+        binding.glass.apply {
+            visibility = View.VISIBLE
+            text = glass
+        }
+    }
+
+    override fun showInstruction(instruction: String) {
+        binding.instruction.apply {
+            visibility = View.VISIBLE
+            text = instruction
+        }
+    }
+
     @SuppressLint("ShowToast")
     override fun showError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()

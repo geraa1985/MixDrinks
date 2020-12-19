@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6A666A">
+    android:background="@color/base_background">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -19,7 +20,7 @@
             android:layout_height="400dp"
             android:elevation="5dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="#474746"
+            app:contentScrim="@color/toolbar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -62,54 +63,550 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/ingredients"
-                android:textColor="#FFB74D"
+                android:textColor="@color/header"
                 android:textSize="40sp"
                 android:textStyle="bold|italic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ingredient_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="ingredient:" />
+
+                <TextView
+                    android:id="@+id/measure_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="measure" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/category"
-                android:textColor="#FFB74D"
+                android:textColor="@color/header"
                 android:textSize="40sp"
                 android:textStyle="bold|italic" />
 
             <TextView
+                android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/iba"
-                android:textColor="#FFB74D"
-                android:textSize="40sp"
-                android:textStyle="bold|italic" />
+                android:textColor="@color/text"
+                android:textSize="20sp"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/alcoholic"
-                android:textColor="#FFB74D"
+                android:textColor="@color/header"
                 android:textSize="40sp"
                 android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/alcoholic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/text"
+                android:textSize="20sp"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/glass"
-                android:textColor="#FFB74D"
+                android:textColor="@color/header"
                 android:textSize="40sp"
                 android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/glass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/text"
+                android:textSize="20sp"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/instruction"
-                android:textColor="#FFB74D"
+                android:textColor="@color/header"
                 android:textSize="40sp"
                 android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/instruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="fill_horizontal"
+                android:textColor="@color/text"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="20sp"
+                android:visibility="gone" />
 
         </LinearLayout>
 
