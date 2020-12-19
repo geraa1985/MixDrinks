@@ -41,7 +41,7 @@ class ListFragment: MvpAppCompatFragment(), IListView, BackButtonListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentListBinding.inflate(inflater)
+        binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -62,7 +62,7 @@ class ListFragment: MvpAppCompatFragment(), IListView, BackButtonListener {
 
     @SuppressLint("ShowToast")
     override fun showError(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT)
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     override fun backClicked(): Boolean {

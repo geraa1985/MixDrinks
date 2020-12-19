@@ -15,7 +15,7 @@
         android:elevation="10dp"
         android:minHeight="?actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
-        app:title="Сhoose a coctail" />
+        app:title="Сhoose a cocktail" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_coctails"

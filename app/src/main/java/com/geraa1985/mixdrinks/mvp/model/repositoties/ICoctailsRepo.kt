@@ -6,4 +6,5 @@ import io.reactivex.rxjava3.core.Single
 interface ICoctailsRepo {
     fun getAlcoCoctails(): Single<ApiResult>
     fun getNonAlcoCoctails(): Single<ApiResult>
+    fun getCocktailById(id: String): Single<ApiResult>
 }

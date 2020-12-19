@@ -6,12 +6,12 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.geraa1985.mixdrinks.databinding.ItemRvCoctailsBinding
 import com.geraa1985.mixdrinks.mvp.model.repositoties.ILoadImage
-import com.geraa1985.mixdrinks.mvp.presenter.lists.ICoctailListPresenter
-import com.geraa1985.mixdrinks.mvp.view.lists.ICoctailItemView
+import com.geraa1985.mixdrinks.mvp.presenter.lists.ICocktailListPresenter
+import com.geraa1985.mixdrinks.mvp.view.lists.ICocktailItemView
 import javax.inject.Inject
 
 class CoctailsRVAdapter(
-    private val presenter: ICoctailListPresenter
+    private val presenter: ICocktailListPresenter
 ) : RecyclerView.Adapter<CoctailsRVAdapter.ViewHolder>() {
 
     @Inject
@@ -35,14 +35,14 @@ class CoctailsRVAdapter(
     override fun getItemCount(): Int = presenter.getCount()
 
     inner class ViewHolder(private val binding: ItemRvCoctailsBinding) :
-        RecyclerView.ViewHolder(binding.root), ICoctailItemView {
+        RecyclerView.ViewHolder(binding.root), ICocktailItemView {
 
         override fun setName(name: String) {
             binding.coctailName.text = name
         }
 
         override fun setImage(image: String) {
-            imgLoader.loadInto(image, binding.coctailImage)
+            imgLoader.loadInto(image, binding.cocktailImage)
         }
 
         override var pos = 0

@@ -1,10 +1,11 @@
 package com.geraa1985.mixdrinks.mvp.presenter.base
 
-import com.geraa1985.mixdrinks.mvp.model.entity.base.Coctail
+import com.geraa1985.mixdrinks.mvp.model.entity.base.Cocktail
 import com.geraa1985.mixdrinks.mvp.model.repositoties.ICoctailsRepo
-import com.geraa1985.mixdrinks.mvp.presenter.lists.ICoctailListPresenter
+import com.geraa1985.mixdrinks.mvp.presenter.lists.ICocktailListPresenter
 import com.geraa1985.mixdrinks.mvp.view.base.IListView
-import com.geraa1985.mixdrinks.mvp.view.lists.ICoctailItemView
+import com.geraa1985.mixdrinks.mvp.view.lists.ICocktailItemView
+import com.geraa1985.mixdrinks.navigation.Screens
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import moxy.MvpPresenter
@@ -28,18 +29,18 @@ class ListPresenter : MvpPresenter<IListView>() {
 
     private var isAlco: Boolean? = null
 
-    val coctailListPresenter = CoctailListPresenter()
+    val coctailListPresenter = CocktailListPresenter()
     private val compositeDisposable = CompositeDisposable()
 
-    class CoctailListPresenter : ICoctailListPresenter {
+    class CocktailListPresenter : ICocktailListPresenter {
 
-        val coctails = mutableListOf<Coctail>()
+        val coctails = mutableListOf<Cocktail>()
 
-        override var itemClickListener: ((ICoctailItemView) -> Unit)? = null
+        override var itemClickListener: ((ICocktailItemView) -> Unit)? = null
 
-        override fun bindView(view: ICoctailItemView) {
+        override fun bindView(view: ICocktailItemView) {
             view.setName(coctails[view.pos].name)
-            view.setImage(coctails[view.pos].image)
+            coctails[view.pos].image?.let { view.setImage(it) }
         }
 
         override fun getCount(): Int = coctails.size
@@ -50,6 +51,10 @@ class ListPresenter : MvpPresenter<IListView>() {
         viewState.initRvCoctails()
         loadData()
 
+        coctailListPresenter.itemClickListener = {
+            val id = coctailListPresenter.coctails[it.pos].id
+            router.navigateTo(Screens.cocktailScreen(id))
+        }
     }
 
     fun setIsAlco(isAlco: Boolean?) {
@@ -65,7 +70,6 @@ class ListPresenter : MvpPresenter<IListView>() {
                     coctailsRepo.getAlcoCoctails()
                         .observeOn(uiScheduler)
                         .subscribe({ apiResult ->
-                            coctailListPresenter.coctails.clear()
                             coctailListPresenter.coctails.addAll(apiResult.drinks)
                             viewState.updateCoctailsList()
                         }, { error ->

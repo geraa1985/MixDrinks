@@ -6,5 +6,5 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ApiResult(
-    @Expose val drinks: List<Coctail>
+    @Expose val drinks: List<Cocktail>
 ): Parcelable

@@ -21,4 +21,8 @@ class CoctailsRepo: ICoctailsRepo {
 
     override fun getNonAlcoCoctails(): Single<ApiResult> =
         api.getNonAlcohol().subscribeOn(Schedulers.io())
+
+    override fun getCocktailById(id: String): Single<ApiResult> =
+        api.getCocktailById(id).subscribeOn(Schedulers.io())
+
 }

@@ -4,9 +4,9 @@ import moxy.MvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
 
 @AddToEndSingle
-interface IListView: MvpView {
-    fun initRvCoctails()
-    fun updateCoctailsList()
+interface ICocktailView : MvpView {
     fun showError(message: String)
-    fun setIsAlco()
+    fun setId()
+    fun showPicture(url: String)
+    fun showName(name: String)
 }
