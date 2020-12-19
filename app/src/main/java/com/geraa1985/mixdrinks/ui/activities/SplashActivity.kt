@@ -1,15 +1,26 @@
 package com.geraa1985.mixdrinks.ui.activities
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.geraa1985.mixdrinks.mvp.presenter.base.SplashPresenter
+import com.geraa1985.mixdrinks.mvp.view.base.ISplashView
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : MvpAppCompatActivity(), ISplashView {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Thread.sleep(2000)
+    val presenter: SplashPresenter by moxyPresenter { SplashPresenter() }
+
+    override fun go() {
         startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    override fun theEnd() {
+        finish()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.theEnd()
     }
 
 }
