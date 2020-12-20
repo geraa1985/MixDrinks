@@ -7,10 +7,13 @@ import com.geraa1985.mixdrinks.mvp.view.base.IListView
 import com.geraa1985.mixdrinks.mvp.view.lists.ICocktailItemView
 import com.geraa1985.mixdrinks.navigation.Screens
 import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import moxy.MvpPresenter
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 class ListPresenter : MvpPresenter<IListView>() {
 
@@ -27,7 +30,7 @@ class ListPresenter : MvpPresenter<IListView>() {
     @Inject
     lateinit var uiScheduler: Scheduler
 
-    private var isAlco: Boolean? = null
+    private var isAlco by Delegates.notNull<Boolean>()
 
     val coctailListPresenter = CocktailListPresenter()
     private val compositeDisposable = CompositeDisposable()
@@ -64,36 +67,98 @@ class ListPresenter : MvpPresenter<IListView>() {
     }
 
     private fun loadData() {
-        isAlco?.let { it ->
-            if (it) {
-                val disposable1 =
-                    coctailsRepo.getAlcoCoctails()
-                        .observeOn(uiScheduler)
-                        .subscribe({ apiResult ->
-                            coctailListPresenter.coctails.addAll(apiResult.drinks)
-                            viewState.updateCoctailsList()
-                        }, { error ->
-                            error.message?.let { message ->
-                                viewState.showError(message)
+        val disposable1: Disposable
+        if (isAlco) {
+            disposable1 =
+                coctailsRepo.getAlcoCoctails()
+                    .observeOn(uiScheduler)
+                    .subscribe({ apiResult ->
+                        coctailListPresenter.coctails.addAll(apiResult.drinks)
+                        viewState.updateCoctailsList()
+                    }, { error ->
+                        error.message?.let { message ->
+                            viewState.showError(message)
+                        }
+                    })
+        } else {
+            disposable1 =
+                coctailsRepo.getNonAlcoCoctails()
+                    .observeOn(uiScheduler)
+                    .subscribe({ apiResult ->
+                        coctailListPresenter.coctails.addAll(apiResult.drinks)
+                        viewState.updateCoctailsList()
+                    }, { error ->
+                        error.message?.let { message ->
+                            viewState.showError(message)
+                        }
+                    })
+        }
+        compositeDisposable.add(disposable1)
+    }
+
+    fun searchCocktail(query: String?) {
+        query?.let { q ->
+            val disposable2 = coctailsRepo.searchCocktailByName(q)
+                .flatMap { apiResult ->
+                    Single.fromCallable {
+                        apiResult.drinks.filter {
+                            if (isAlco) {
+                                return@filter it.alcoholic == "Alcoholic"
+                            } else {
+                                return@filter it.alcoholic == "Non alcoholic"
                             }
-                        })
-                compositeDisposable.add(disposable1)
-            } else {
-                val disposable1 =
-                    coctailsRepo.getNonAlcoCoctails()
-                        .observeOn(uiScheduler)
-                        .subscribe({ apiResult ->
-                            coctailListPresenter.coctails.clear()
-                            coctailListPresenter.coctails.addAll(apiResult.drinks)
-                            viewState.updateCoctailsList()
-                        }, { error ->
-                            error.message?.let { message ->
-                                viewState.showError(message)
+                        }
+                    }
+                }
+                .observeOn(uiScheduler)
+                .subscribe({ drinks ->
+                    drinks?.get(0)?.let {
+                        router.navigateTo(Screens.cocktailScreen(it.id))
+                    }
+                }, { error ->
+                    error.message?.let { message ->
+                        viewState.showError(message)
+                    }
+                })
+            compositeDisposable.add(disposable2)
+        }
+    }
+
+    fun searchCocktails(newText: String?) {
+        newText?.let { text ->
+            if (text.isNotEmpty()) {
+                val disposable3 = coctailsRepo.searchCocktailByName(text)
+                    .flatMap { apiResult ->
+                        Single.fromCallable {
+                            apiResult.drinks.filter {
+                                if (isAlco) {
+                                    return@filter it.alcoholic == "Alcoholic"
+                                } else {
+                                    return@filter it.alcoholic == "Non alcoholic"
+                                }
                             }
-                        })
-                compositeDisposable.add(disposable1)
+                        }
+                    }
+                    .observeOn(uiScheduler)
+                    .subscribe({ drinks ->
+                        coctailListPresenter.coctails.clear()
+                        coctailListPresenter.coctails.addAll(drinks)
+                        viewState.updateCoctailsList()
+                    }, { error ->
+                        error.message?.let { message ->
+                            viewState.showError(message)
+                        }
+                    })
+                compositeDisposable.add(disposable3)
             }
         }
+    }
+
+    fun searchHint(): String {
+        if (isAlco) {
+            return "Search alcoholic cocktail"
+        }
+        return "Search non-alcoholic cocktail"
     }
 
     fun backClicked(): Boolean {

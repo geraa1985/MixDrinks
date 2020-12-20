@@ -16,4 +16,7 @@ interface IApiData {
     @GET("lookup.php")
     fun getCocktailById(@Query("i") id: String): Single<ApiResult>
 
+    @GET("search.php?")
+    fun searchCocktailByName(@Query("s") name: String): Single<ApiResult>
+
 }

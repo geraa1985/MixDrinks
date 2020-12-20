@@ -7,4 +7,5 @@ interface ICoctailsRepo {
     fun getAlcoCoctails(): Single<ApiResult>
     fun getNonAlcoCoctails(): Single<ApiResult>
     fun getCocktailById(id: String): Single<ApiResult>
+    fun searchCocktailByName(name: String): Single<ApiResult>
 }
