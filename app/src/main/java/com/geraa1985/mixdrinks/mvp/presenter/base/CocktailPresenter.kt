@@ -1,10 +1,12 @@
 package com.geraa1985.mixdrinks.mvp.presenter.base
 
 import com.geraa1985.mixdrinks.mvp.model.entity.base.Cocktail
-import com.geraa1985.mixdrinks.mvp.model.repositoties.ICoctailsRepo
+import com.geraa1985.mixdrinks.mvp.model.repositoties.ICocktailsRepo
 import com.geraa1985.mixdrinks.mvp.view.base.ICocktailView
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.rxjava3.subjects.PublishSubject
 import moxy.MvpPresenter
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
@@ -15,7 +17,7 @@ class CocktailPresenter : MvpPresenter<ICocktailView>() {
     lateinit var router: Router
 
     @Inject
-    lateinit var coctailsRepo: ICoctailsRepo
+    lateinit var cocktailsRepo: ICocktailsRepo
 
     @Inject
     lateinit var uiScheduler: Scheduler
@@ -23,6 +25,8 @@ class CocktailPresenter : MvpPresenter<ICocktailView>() {
     private var id: String? = null
 
     private val compositeDisposable = CompositeDisposable()
+
+    private val subject: PublishSubject<Cocktail> = PublishSubject.create()
 
     init {
         viewState.setId()
@@ -36,15 +40,22 @@ class CocktailPresenter : MvpPresenter<ICocktailView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+
+        subject.observeOn(Schedulers.io()).subscribe { cocktail ->
+            cocktailsRepo.putCocktail(cocktail)
+        }
+
         loadData()
+
     }
 
     private fun loadData() {
         id?.let { id ->
-            val disposable1 = coctailsRepo.getCocktailById(id)
+            val disposable1 = cocktailsRepo.getCocktailById(id)
                 .observeOn(uiScheduler)
                 .subscribe({result ->
-                    val cocktail: Cocktail = result.drinks[0]
+                    val cocktail: Cocktail = result
+                    subject.onNext(cocktail)
                     viewState.showName(cocktail.name)
                     cocktail.image?.let { viewState.showPicture(it) }
                     cocktail.ingredient1?.let { viewState.showIngredient1(it) }

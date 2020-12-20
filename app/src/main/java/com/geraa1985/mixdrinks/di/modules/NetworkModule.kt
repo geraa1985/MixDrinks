@@ -1,6 +1,8 @@
 package com.geraa1985.mixdrinks.di.modules
 
 import com.geraa1985.mixdrinks.mvp.model.api.IApiData
+import com.geraa1985.mixdrinks.mvp.model.networkstatus.INetworkStatus
+import com.geraa1985.mixdrinks.ui.networkstatus.NetworkStatus
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -28,11 +30,15 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun api(@Named("baseUrl") baseUrl : String, gson: Gson): IApiData =
+    fun api(@Named("baseUrl") baseUrl: String, gson: Gson): IApiData =
         Retrofit.Builder()
             .baseUrl(baseUrl)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(IApiData::class.java)
+
+    @Singleton
+    @Provides
+    fun networkStatus(): INetworkStatus = NetworkStatus()
 }

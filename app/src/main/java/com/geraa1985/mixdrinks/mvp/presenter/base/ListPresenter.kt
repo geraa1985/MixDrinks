@@ -1,7 +1,7 @@
 package com.geraa1985.mixdrinks.mvp.presenter.base
 
 import com.geraa1985.mixdrinks.mvp.model.entity.base.Cocktail
-import com.geraa1985.mixdrinks.mvp.model.repositoties.ICoctailsRepo
+import com.geraa1985.mixdrinks.mvp.model.repositoties.ICocktailsRepo
 import com.geraa1985.mixdrinks.mvp.presenter.lists.ICocktailListPresenter
 import com.geraa1985.mixdrinks.mvp.view.base.IListView
 import com.geraa1985.mixdrinks.mvp.view.lists.ICocktailItemView
@@ -25,7 +25,7 @@ class ListPresenter : MvpPresenter<IListView>() {
     lateinit var router: Router
 
     @Inject
-    lateinit var coctailsRepo: ICoctailsRepo
+    lateinit var cocktailsRepo: ICocktailsRepo
 
     @Inject
     lateinit var uiScheduler: Scheduler
@@ -55,8 +55,8 @@ class ListPresenter : MvpPresenter<IListView>() {
         loadData()
 
         coctailListPresenter.itemClickListener = {
-            val id = coctailListPresenter.coctails[it.pos].id
-            router.navigateTo(Screens.cocktailScreen(id))
+            val cocktail = coctailListPresenter.coctails[it.pos]
+            router.navigateTo(Screens.cocktailScreen(cocktail.id))
         }
     }
 
@@ -70,10 +70,10 @@ class ListPresenter : MvpPresenter<IListView>() {
         val disposable1: Disposable
         if (isAlco) {
             disposable1 =
-                coctailsRepo.getAlcoCoctails()
+                cocktailsRepo.getAlcoCoctails()
                     .observeOn(uiScheduler)
                     .subscribe({ apiResult ->
-                        coctailListPresenter.coctails.addAll(apiResult.drinks)
+                        coctailListPresenter.coctails.addAll(apiResult)
                         viewState.updateCoctailsList()
                     }, { error ->
                         error.message?.let { message ->
@@ -82,10 +82,10 @@ class ListPresenter : MvpPresenter<IListView>() {
                     })
         } else {
             disposable1 =
-                coctailsRepo.getNonAlcoCoctails()
+                cocktailsRepo.getNonAlcoCoctails()
                     .observeOn(uiScheduler)
                     .subscribe({ apiResult ->
-                        coctailListPresenter.coctails.addAll(apiResult.drinks)
+                        coctailListPresenter.coctails.addAll(apiResult)
                         viewState.updateCoctailsList()
                     }, { error ->
                         error.message?.let { message ->
@@ -98,10 +98,10 @@ class ListPresenter : MvpPresenter<IListView>() {
 
     fun searchCocktail(query: String?) {
         query?.let { q ->
-            val disposable2 = coctailsRepo.searchCocktailByName(q)
+            val disposable2 = cocktailsRepo.searchCocktailByName(q)
                 .flatMap { apiResult ->
                     Single.fromCallable {
-                        apiResult.drinks.filter {
+                        apiResult.filter {
                             if (isAlco) {
                                 return@filter it.alcoholic == "Alcoholic"
                             } else {
@@ -127,10 +127,10 @@ class ListPresenter : MvpPresenter<IListView>() {
     fun searchCocktails(newText: String?) {
         newText?.let { text ->
             if (text.isNotEmpty()) {
-                val disposable3 = coctailsRepo.searchCocktailByName(text)
+                val disposable3 = cocktailsRepo.searchCocktailByName(text)
                     .flatMap { apiResult ->
                         Single.fromCallable {
-                            apiResult.drinks.filter {
+                            apiResult.filter {
                                 if (isAlco) {
                                     return@filter it.alcoholic == "Alcoholic"
                                 } else {

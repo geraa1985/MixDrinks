@@ -1,16 +1,14 @@
 package com.geraa1985.mixdrinks.di.components
 
-import com.geraa1985.mixdrinks.di.modules.AppModule
-import com.geraa1985.mixdrinks.di.modules.CiceroneModule
-import com.geraa1985.mixdrinks.di.modules.NetworkModule
-import com.geraa1985.mixdrinks.di.modules.ReposModule
-import com.geraa1985.mixdrinks.mvp.model.repositoties.CoctailsRepo
+import com.geraa1985.mixdrinks.di.modules.*
+import com.geraa1985.mixdrinks.mvp.model.entity.room.cache.CocktailsCache
+import com.geraa1985.mixdrinks.mvp.model.repositoties.CocktailsRepo
 import com.geraa1985.mixdrinks.mvp.presenter.base.CocktailPresenter
 import com.geraa1985.mixdrinks.mvp.presenter.base.ListPresenter
 import com.geraa1985.mixdrinks.mvp.presenter.base.MainPresenter
 import com.geraa1985.mixdrinks.mvp.presenter.base.SelectPresenter
 import com.geraa1985.mixdrinks.ui.activities.MainActivity
-import com.geraa1985.mixdrinks.ui.adapters.CoctailsRVAdapter
+import com.geraa1985.mixdrinks.ui.adapters.CocktailsRVAdapter
 import com.geraa1985.mixdrinks.ui.fragments.CocktailFragment
 import dagger.Component
 import javax.inject.Singleton
@@ -21,7 +19,8 @@ import javax.inject.Singleton
         CiceroneModule::class,
         NetworkModule::class,
         ReposModule::class,
-        AppModule::class
+        AppModule::class,
+        CacheModule::class
     ]
 )
 interface MainGraph {
@@ -29,9 +28,9 @@ interface MainGraph {
     fun inject(mainPresenter: MainPresenter)
     fun inject(selectPresenter: SelectPresenter)
     fun inject(listPresenter: ListPresenter)
-    fun inject(coctailsRVAdapter: CoctailsRVAdapter)
-    fun inject(coctailsRepo: CoctailsRepo)
+    fun inject(cocktailsRVAdapter: CocktailsRVAdapter)
+    fun inject(coctailsRepo: CocktailsRepo)
     fun inject(cocktailPresenter: CocktailPresenter)
     fun inject(cocktailFragment: CocktailFragment)
-
+    fun inject(cocktailsCache: CocktailsCache)
 }

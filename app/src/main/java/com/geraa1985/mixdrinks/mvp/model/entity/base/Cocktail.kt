@@ -10,10 +10,8 @@ data class Cocktail(
     @Expose @SerializedName("idDrink") val id: String,
     @Expose @SerializedName("strDrink") val name: String,
     @Expose @SerializedName("strDrinkThumb") val image: String?,
-
     @Expose @SerializedName("strTags") val tags: String?,
     @Expose @SerializedName("strCategory") val category: String?,
-    @Expose @SerializedName("strIBA") val iba: String?,
     @Expose @SerializedName("strAlcoholic") val alcoholic: String?,
     @Expose @SerializedName("strGlass") val glass: String?,
     @Expose @SerializedName("strInstructions") val instructions: String?,

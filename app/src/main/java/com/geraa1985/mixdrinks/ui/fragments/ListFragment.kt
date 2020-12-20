@@ -13,7 +13,7 @@ import com.geraa1985.mixdrinks.databinding.FragmentListBinding
 import com.geraa1985.mixdrinks.mvp.presenter.base.ListPresenter
 import com.geraa1985.mixdrinks.mvp.view.base.IListView
 import com.geraa1985.mixdrinks.ui.BackButtonListener
-import com.geraa1985.mixdrinks.ui.adapters.CoctailsRVAdapter
+import com.geraa1985.mixdrinks.ui.adapters.CocktailsRVAdapter
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -37,7 +37,7 @@ class ListFragment: MvpAppCompatFragment(), IListView, BackButtonListener {
         ListPresenter().apply { MyApp.instance.mainGraph.inject(this) }
     }
 
-    private var adapter: CoctailsRVAdapter? = null
+    private var adapter: CocktailsRVAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -84,7 +84,7 @@ class ListFragment: MvpAppCompatFragment(), IListView, BackButtonListener {
 
     override fun initRvCoctails() {
         binding.rvCoctails.layoutManager = GridLayoutManager(requireContext(),2)
-        adapter = CoctailsRVAdapter(presenter.coctailListPresenter).apply { MyApp.instance.mainGraph.inject(this) }
+        adapter = CocktailsRVAdapter(presenter.coctailListPresenter).apply { MyApp.instance.mainGraph.inject(this) }
         binding.rvCoctails.adapter = adapter
     }
 
