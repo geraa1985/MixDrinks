@@ -84,7 +84,7 @@ class ListFragment: MvpAppCompatFragment(), IListView, BackButtonListener {
 
     override fun initRvCoctails() {
         binding.rvCoctails.layoutManager = GridLayoutManager(requireContext(),2)
-        adapter = CocktailsRVAdapter(presenter.coctailListPresenter).apply { MyApp.instance.mainGraph.inject(this) }
+        adapter = CocktailsRVAdapter(presenter.cocktailListPresenter).apply { MyApp.instance.mainGraph.inject(this) }
         binding.rvCoctails.adapter = adapter
     }
 

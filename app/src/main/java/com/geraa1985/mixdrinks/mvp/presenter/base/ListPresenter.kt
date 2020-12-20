@@ -32,21 +32,21 @@ class ListPresenter : MvpPresenter<IListView>() {
 
     private var isAlco by Delegates.notNull<Boolean>()
 
-    val coctailListPresenter = CocktailListPresenter()
+    val cocktailListPresenter = CocktailListPresenter()
     private val compositeDisposable = CompositeDisposable()
 
     class CocktailListPresenter : ICocktailListPresenter {
 
-        val coctails = mutableListOf<Cocktail>()
+        val cocktails = mutableListOf<Cocktail>()
 
         override var itemClickListener: ((ICocktailItemView) -> Unit)? = null
 
         override fun bindView(view: ICocktailItemView) {
-            view.setName(coctails[view.pos].name)
-            coctails[view.pos].image?.let { view.setImage(it) }
+            view.setName(cocktails[view.pos].name)
+            cocktails[view.pos].image?.let { view.setImage(it) }
         }
 
-        override fun getCount(): Int = coctails.size
+        override fun getCount(): Int = cocktails.size
     }
 
     override fun onFirstViewAttach() {
@@ -54,8 +54,8 @@ class ListPresenter : MvpPresenter<IListView>() {
         viewState.initRvCoctails()
         loadData()
 
-        coctailListPresenter.itemClickListener = {
-            val cocktail = coctailListPresenter.coctails[it.pos]
+        cocktailListPresenter.itemClickListener = {
+            val cocktail = cocktailListPresenter.cocktails[it.pos]
             router.navigateTo(Screens.cocktailScreen(cocktail.id))
         }
     }
@@ -73,7 +73,7 @@ class ListPresenter : MvpPresenter<IListView>() {
                 cocktailsRepo.getAlcoCoctails()
                     .observeOn(uiScheduler)
                     .subscribe({ apiResult ->
-                        coctailListPresenter.coctails.addAll(apiResult)
+                        cocktailListPresenter.cocktails.addAll(apiResult)
                         viewState.updateCoctailsList()
                     }, { error ->
                         error.message?.let { message ->
@@ -85,7 +85,7 @@ class ListPresenter : MvpPresenter<IListView>() {
                 cocktailsRepo.getNonAlcoCoctails()
                     .observeOn(uiScheduler)
                     .subscribe({ apiResult ->
-                        coctailListPresenter.coctails.addAll(apiResult)
+                        cocktailListPresenter.cocktails.addAll(apiResult)
                         viewState.updateCoctailsList()
                     }, { error ->
                         error.message?.let { message ->
@@ -112,8 +112,10 @@ class ListPresenter : MvpPresenter<IListView>() {
                 }
                 .observeOn(uiScheduler)
                 .subscribe({ drinks ->
-                    drinks?.get(0)?.let {
-                        router.navigateTo(Screens.cocktailScreen(it.id))
+                    try {
+                        router.navigateTo(Screens.cocktailScreen(drinks[0].id))
+                    } catch (e: IndexOutOfBoundsException) {
+                        viewState.showError("There is no such cocktail")
                     }
                 }, { error ->
                     error.message?.let { message ->
@@ -141,8 +143,8 @@ class ListPresenter : MvpPresenter<IListView>() {
                     }
                     .observeOn(uiScheduler)
                     .subscribe({ drinks ->
-                        coctailListPresenter.coctails.clear()
-                        coctailListPresenter.coctails.addAll(drinks)
+                        cocktailListPresenter.cocktails.clear()
+                        cocktailListPresenter.cocktails.addAll(drinks)
                         viewState.updateCoctailsList()
                     }, { error ->
                         error.message?.let { message ->
