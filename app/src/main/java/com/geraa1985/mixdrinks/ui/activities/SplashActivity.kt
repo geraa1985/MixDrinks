@@ -44,12 +44,12 @@ class SplashActivity : MvpAppCompatActivity(), ISplashView {
     }
 
     override fun theEnd() {
-        finish()
+        router.exit()
+        navigatorHolder.removeNavigator()
     }
 
     override fun onPause() {
         super.onPause()
-        navigatorHolder.removeNavigator()
         presenter.theEnd()
     }
 
