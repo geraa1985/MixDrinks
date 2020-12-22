@@ -7,15 +7,15 @@ import com.geraa1985.mixdrinks.ui.fragments.SelectFragment
 import moxy.MvpAppCompatFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
-class Screens(private val fragment: MvpAppCompatFragment): SupportAppScreen() {
+class FragmentScreen(private val fragment: MvpAppCompatFragment): SupportAppScreen() {
 
     override fun getFragment(): Fragment {
         return fragment
     }
 
     companion object{
-        fun selectScreen() = Screens(SelectFragment())
-        fun listScreen(isAlco: Boolean) = Screens(ListFragment.newInstance(isAlco))
-        fun cocktailScreen(id: String) = Screens(CocktailFragment.newInstance(id))
+        fun selectScreen() = FragmentScreen(SelectFragment())
+        fun listScreen(isAlco: Boolean) = FragmentScreen(ListFragment.newInstance(isAlco))
+        fun cocktailScreen(id: String) = FragmentScreen(CocktailFragment.newInstance(id))
     }
 }

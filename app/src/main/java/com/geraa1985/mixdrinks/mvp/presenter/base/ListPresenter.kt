@@ -5,7 +5,7 @@ import com.geraa1985.mixdrinks.mvp.model.repositoties.ICocktailsRepo
 import com.geraa1985.mixdrinks.mvp.presenter.lists.ICocktailListPresenter
 import com.geraa1985.mixdrinks.mvp.view.base.IListView
 import com.geraa1985.mixdrinks.mvp.view.lists.ICocktailItemView
-import com.geraa1985.mixdrinks.navigation.Screens
+import com.geraa1985.mixdrinks.navigation.FragmentScreen
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -56,7 +56,7 @@ class ListPresenter : MvpPresenter<IListView>() {
 
         cocktailListPresenter.itemClickListener = {
             val cocktail = cocktailListPresenter.cocktails[it.pos]
-            router.navigateTo(Screens.cocktailScreen(cocktail.id))
+            router.navigateTo(FragmentScreen.cocktailScreen(cocktail.id))
         }
     }
 
@@ -113,7 +113,7 @@ class ListPresenter : MvpPresenter<IListView>() {
                 .observeOn(uiScheduler)
                 .subscribe({ drinks ->
                     try {
-                        router.navigateTo(Screens.cocktailScreen(drinks[0].id))
+                        router.navigateTo(FragmentScreen.cocktailScreen(drinks[0].id))
                     } catch (e: IndexOutOfBoundsException) {
                         viewState.showError("There is no such cocktail")
                     }
