@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">MixDrinks</string>
+    <string name="alcohol">alcohol</string>
+    <string name="non_alcohol">non-alcohol</string>
+    <string name="alcohol_text">Alcohol</string>
+    <string name="non_alcohol_text">Non-alcohol</string>
+    <string name="cocktail">cocktail</string>
+    <string name="cocktail_text">cocktail_text</string>
+    <string name="cocktail_picture">cocktail_image</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="category">Category</string>
+    <string name="iba">IBA</string>
+    <string name="alcoholic">Alcoholic</string>
+    <string name="glass">Glass</string>
+    <string name="instruction">Instruction</string>
+    <string name="search">search</string>
 </resources>
